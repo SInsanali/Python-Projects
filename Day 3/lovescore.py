@@ -1,8 +1,12 @@
+#Welcome message
+print("Welcome to the Love Score Calculator!")
+
+#Get user inputs
+name1 = input("What is your first and last name?\n")
+name2 = input("\nWhat is their first and last name?\n")
+
 print("The Love Calculator is calculating your score...")
-name1 = input() # What is your name?
-name2 = input() # What is their name?
-# 🚨 Don't change the code above 👆
-# Write your code below this line 👇
+
 #combine names together and make lowercase
 combined_names = (name1 + name2).lower()
 
