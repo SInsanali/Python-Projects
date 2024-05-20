@@ -11,7 +11,7 @@ weight = float(input("What is your weight in lbs?\n"))
 
 # Plug inputs into BMI formula
 #bmi = (weight in lbs / (height in inches^2)) * 703
-bmi = (weight / (height ** 2)) * 703
+bmi = round((weight / (height ** 2)) * 703, 2)
 
 #Dictate health classes based on BMI and deliver the news
 if bmi < 18.5:

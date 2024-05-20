@@ -20,6 +20,6 @@ bill_plus_tip = bill_amount * (1 + tip_as_decimal)
 amount_per_person = bill_plus_tip / people_paying
 
 # Deliver the bad news
-print(f"\nThe tip amount is ${tip_amount}")
+print(f"\nThe tip amount is ${tip_amount:.2f}")
 print(f"The total bill plus tip is ${bill_plus_tip:.2f}")
 print(f"Each person should pay ${amount_per_person:.2f}")

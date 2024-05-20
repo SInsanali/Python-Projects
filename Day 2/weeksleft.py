@@ -14,4 +14,4 @@ current_age_in_weeks = current_age * 52
 weeks_left = desired_age_in_weeks - current_age_in_weeks
 
 #Deliver the news
-print(f"\nYou have roughly {weeks_left} weeks left.")
+print(f"\nYou have roughly {weeks_left} weeks of life left.")
