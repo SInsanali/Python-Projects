@@ -26,15 +26,15 @@ print("Welcome to Treasure Island.")
 print("Your objective is to find the treasure.\n") 
 
 # First choice
-first_choice = input("You arrive at a fork in the road. Where do you go? Type 'left' or 'right'\n").lower()
+first_choice = input("\nYou arrive at a fork in the road. Where do you go? Type 'left' or 'right'\n").lower()
 
 if first_choice == "left":
     # Advance to second choice
-    second_choice = input("You arrive at a lake. There is an island in the middle of the lake. Type 'wait' to wait for a boat. Type 'swim' to swim across.\n").lower()
+    second_choice = input("\nYou arrive at a lake. There is an island in the middle of the lake.\nType 'wait' to wait for a boat. Type 'swim' to swim across.\n").lower()
 
     if second_choice == "wait":
         # Advance to third choice
-        third_choice = input("You arrive at the island unharmed and see a house with 3 doors. Type 'red' to enter the red door. Type 'yellow' to enter the yellow door. Type 'blue' to enter the blue door.\n").lower()
+        third_choice = input("\nYou arrive at the island unharmed and see a house with 3 doors.\nType 'red' to enter the red door. Type 'yellow' to enter the yellow door. Type 'blue' to enter the blue door.\n").lower()
 
         if third_choice == "yellow":
             print("\nCongratulations! You found the treasure, you're rich!")
@@ -45,9 +45,9 @@ if first_choice == "left":
         else:
             print("\nYou chose a door that doesn't exist. Game over!")
     else:
-        print("You are surrounded by sharks and eaten. Game over!")
+        print("\nYou are surrounded by sharks and eaten. Game over!")
 
 elif first_choice == "right":
-    print("You stepped on a land mine and were blew up! Game over!")
+    print("\nYou stepped on a land mine and were blew up! Game over!")
 else:
-    print("You picked a wrong direction and were vaporized. Game over!")
+    print("\nYou picked a wrong direction and were vaporized. Game over!")
