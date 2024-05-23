@@ -31,23 +31,27 @@ import random
 
 #welcome message and get user input
 print("\nWelcome to Rock, Paper, Scissors! Can you beat the computer?")
+
+#make user choice and generate random number for computer choice
 user_choice = int(input("Which do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors: "))
+computer_choice = random.randint(0,2)
 
 #create list of options
 options = [rock, paper, scissors]
+choices = [user_choice, computer_choice]
+valid_inputs = [0, 1, 2]
 
-#print users choice with user input as the index
-print(f"\nYou chose: \n{options[user_choice]}")
+#print users choice with user input as the index and print computers choice with random number as the index
+#add input validation
+if user_choice not in valid_inputs:
+   print("\nYou entered an invalid choice, you lose!")
 
-#generate random number for computer choice
-computer_choice = random.randint(0,2)
-#print computers choice with random number as the index
-print(f"\nThe computer chose: \n{options[computer_choice]}")
+else:
+    print(f"\nYou chose: \n{options[user_choice]}")
+    print(f"\nThe computer chose: \n{options[computer_choice]}")
 
 
 #create conditional statements to determine who wins
-choices = [user_choice, computer_choice]
-
 if choices == [0,2] or choices == [1,0] or choices == [2,1]:
   print("\nYou win!")
     
