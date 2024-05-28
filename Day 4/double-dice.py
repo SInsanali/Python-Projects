@@ -71,6 +71,6 @@ dice_value_2 = random_number_2 + 1
 total_dice_value = dice_value_1 + dice_value_2
 
 # print die faces and total value
-print(dice_face_chosen_1 + dice_face_chosen_2) 
+print(dice_face_chosen_1+dice_face_chosen_2) 
 print(f"The total value of your roll is: {total_dice_value}")
 

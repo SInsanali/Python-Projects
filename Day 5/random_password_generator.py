@@ -29,9 +29,15 @@ for number in range(1, nr_numbers + 1):
 for symbol in range(1, nr_symbols + 1):
     password += random.choice(symbols)
 
-#make password string into a list, shuffle it, and make it a string again
+#make password string into a list and shuffle it
 password = list(password)
 random.shuffle(password)
-password = ''.join(password)
 
-print(f"\nYour password is : {password}")
+#turn back into string using a for loop
+final_password = ""
+for char in password:
+    final_password += char
+
+# password = ''.join(password)
+
+print(f"\nYour password is : {final_password}")
