@@ -44,6 +44,9 @@ direction = input('Type "e" to encode, type "d" to decode:\n')
 
 #input validation
 valid_inputs = ["e", "d"]
+
+
+
 if direction not in valid_inputs:
     print("Please choose a valid entry")
 
