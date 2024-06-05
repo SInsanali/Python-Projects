@@ -1,51 +1,50 @@
+# Tons of pseudo code in this to help me understand the logic as I code :)
+
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-direction = input('Type "encode" to encrypt, type "decode" to decrypt:\n')
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+# Gather user inputs
+direction = input('Type "e" to encode, type "d" to decode:\n')
+text = input("Enter your message to be converted:\n").lower()
+shift = int(input("How many places will this be shifted?:\n"))
 
-
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
-
-
-def encrypt(text, shift):
-    encrypted_message = ""
-    for char in text:
-        #checks if the character is a letter in list "alphabet"
+# Define functions
+def encode(plain_text, shift_value):
+    cypher_text = ""
+    for char in plain_text:
+        # Checks if the character is a letter in list "alphabet"
         if char in alphabet:
-
-            #find index number for the character
+            # Find index number for the character
             char_og_position = alphabet.index(char)
-
-            #add the shift while the character is represented as an index value
-            char_new_position = char_og_position + shift
-
-            #convert back to a letter
+            # Add the shift while the character is represented as an index value
+            char_new_position = (char_og_position + shift_value) % 26
+            # Convert back to a letter
             new_char = alphabet[char_new_position]
-
-            #append to string
-            encrypted_message += new_char
-
-
-        #if not in alphabet, append to string 
+            # Append to string
+            cypher_text += new_char
+        # If not in alphabet, append to string 
         else:
-            encrypted_message += char
+            cypher_text += char
+    
+    # Print output
+    print(f"The encoded text is: {cypher_text}")
+
+def decode(encoded_text, shift_value):
+    decoded_text = ""
+    for char in encoded_text:
+        if char in alphabet:
+            char_og_position = alphabet.index(char)
+            char_new_position = (char_og_position - shift_value) % 26
+            new_char = alphabet[char_new_position]
+            decoded_text += new_char
+        else:
+            decoded_text += char
             
-    #print output
-    print(f"The encoded text is: {encrypted_message}")
+    print(f"The decoded text is: {decoded_text}")
 
-encrypt(text, shift)
-
-    #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.  
-    #e.g. 
-    #plain_text = "hello"
-    #shift = 5
-    #cipher_text = "mjqqt"
-    #print output: "The encoded text is mjqqt"
-
-    ##HINT: How do you get the index of an item in a list:
-    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
-
-    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+# Output conditional logic
+if direction == "e":
+    encode(text, shift)
+elif direction == "d":
+    decode(text, shift)
+else:
+    print("Please choose a valid entry")
