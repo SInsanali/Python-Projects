@@ -2,11 +2,6 @@
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# Gather user inputs
-direction = input('Type "e" to encode, type "d" to decode:\n')
-text = input("Enter your message to be converted:\n").lower()
-shift = int(input("How many places will this be shifted?:\n"))
-
 # Define functions
 def encode(plain_text, shift_value):
     cypher_text = ""
@@ -41,10 +36,24 @@ def decode(encoded_text, shift_value):
             
     print(f"The decoded text is: {decoded_text}")
 
-# Output conditional logic
+
+#need to update this to made the program a while loop so it can handle input errors and continue on. 
+
+# Gather user inputs and output conditional logic
+direction = input('Type "e" to encode, type "d" to decode:\n')
+
+#input validation
+valid_inputs = ["e", "d"]
+if direction not in valid_inputs:
+    print("Please choose a valid entry")
+
+else:
+    text = input("Enter your message to be converted:\n").lower()
+    shift = int(input("How many places will this be shifted?:\n"))
+
 if direction == "e":
     encode(text, shift)
 elif direction == "d":
     decode(text, shift)
-else:
-    print("Please choose a valid entry")
+
+
