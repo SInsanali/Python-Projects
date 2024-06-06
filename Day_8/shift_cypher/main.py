@@ -34,7 +34,7 @@ def logic(instruction, input_text, shift_value):
     print(f"\nYour {operation} text is: {output_text}") 
 
 
-print(art.banner)
+print(art.banner[2])
 
 run = True
 
@@ -43,37 +43,32 @@ while run:
     direction = input('\nType "e" to encode, type "d" to decode:\n')
     #input validation
     if direction != "e" and direction != "d":
-        print("Please enter a valid single letter.")
+        print("\nPlease enter a valid single letter (e or d).")
         continue
 
     text = input("Enter your message to be converted:\n").lower()
     
-    shift_input = input("How many places will this be shifted?:\n")
-    # Input validation for shift
-    
-    
-    # Need to work on this to loop the input if an invalid input is entered.
+    while True:
+        shift_input = input("How many places will this be shifted?:\n")   
 
-    if not shift_input.isdigit():
-        print("Please enter a valid number.")
-        continue
-    shift = int(shift_input)
-    
-    # Need to work on this to loop the input if an invalid input is entered.
+        if shift_input.isdigit():
+            shift = int(shift_input)
+            break
+        else:
+            print("\nPlease enter a valid number.")
 
-
-    #execute logic
+    #call logic function
     logic(direction, text, shift)
 
     #run or end program
-    go_again = input('\nWould you like to run the program again? Type "y" to run again or "n" to end the program:\n')
+    while True:
+        go_again = input('\nWould you like to run the program again? Type "y" to run again or "n" to end the program:\n')
+        if go_again == "y" or go_again == "n":
+            break
 
-    # Asks the user if they want to go again and adds input validation.
-    if go_again != "y" and go_again != "n":
-        print("Please enter a valid single letter.")
-        continue
-    elif go_again == "y":
-        continue
-    elif go_again == "n":
+        else:
+            print("\nPlease enter a valid single letter (y or n).\n")
+    
+    if go_again == "n":
         run = False
-        print("Thank you for using this program!")
+        print("\nThank you for using this program!")
