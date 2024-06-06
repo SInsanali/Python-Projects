@@ -1,9 +1,9 @@
+#!/usr/bin/python
 import art
 
-# Tons of pseudo code in this to help me understand the logic as I code :)
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# Define functions
+# Define function
 def logic(instruction, input_text, shift_value):
     output_text = ""
    
@@ -31,9 +31,8 @@ def logic(instruction, input_text, shift_value):
         else:
             output_text += char
             
-    print(f"\nYour {operation} text is: {output_text}")
+    print(f"\nYour {operation} text is: {output_text}") 
 
-# Need to update this to made the program a while loop so it can handle input errors and continue on. 
 
 print(art.banner)
 
@@ -53,13 +52,14 @@ while run:
     # Input validation for shift
     
     
-    #need to work on this
+    # Need to work on this to loop the input if an invalid input is entered.
+
     if not shift_input.isdigit():
         print("Please enter a valid number.")
         continue
     shift = int(shift_input)
-    #need to work on this
     
+    # Need to work on this to loop the input if an invalid input is entered.
 
 
     #execute logic
