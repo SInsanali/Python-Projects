@@ -1,7 +1,9 @@
+##################################################################################################
 #Created by Sam Insanali
-
+##################################################################################################
 #Silent auction game
 #The focus of this program is to solidify my strengths on working with nested dictionaries
+##################################################################################################
 
 from os import system, name
 import art
@@ -18,16 +20,10 @@ def clear():
 #program start banner
 print(art.logo)
 print("\nWelcome to the Secret Auction")
-
 item_for_sale = input("What are we selling today?\n")
 
-# def user_entry(new_name, new_bid):
-#     user_info = {}
-#     user_info["bidder_name"] = new_name
-#     user_info["bidders_bid"] = new_bid
-
+#loop to prompt and handle user inputs
 all_bidders = []
-
 prompts = True
 while prompts:
     #get bidders name
@@ -45,7 +41,6 @@ while prompts:
         else:
             print("\nPlease enter a valid number")
 
-    #TODO  fix this so each user has a new dictionary created for them
     #add info to new dictionary
     user_info = {}
     user_info["name"] = bidders_name
@@ -55,7 +50,7 @@ while prompts:
 
     #continue or break prompt loop
     while True:
-        more_bidders = input("\nAre there any other bidders? Type 'y' or 'n'")
+        more_bidders = input("\nAre there any other bidders? Type 'y' or 'n'\n")
         if more_bidders == "y" or more_bidders == "n":
             break
         else:
@@ -64,9 +59,21 @@ while prompts:
     if more_bidders == "y":
         clear()
     elif more_bidders == "n":
-        prompts = False
+        prompts = False 
 
-#testing
-print(all_bidders)
+#determine the winner
+for bidder in all_bidders:
+    
+    winner = ""
+    highest_bid = 0
+    
+    if bidder["bid"] > highest_bid:
+        highest_bid = bidder["bid"]
+        winner = bidder["name"]
 
-#TODO determine the winner
+        #In the auction the first person to make a bid for the highest amount will win the auction
+        #unless someone else beats that bid. 
+        
+    
+print(f"\nThe winner is {winner} with a bid of ${highest_bid} for {item_for_sale}.")
+
