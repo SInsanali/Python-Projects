@@ -18,6 +18,8 @@ def clear():
         action = system("clear")
 
 #program start banner
+clear()
+
 print(art.logo)
 print("\nWelcome to the Secret Auction")
 item_for_sale = input("What are we selling today?\n")
@@ -75,5 +77,5 @@ for bidder in all_bidders:
         #unless someone else beats that bid. 
         
     
-print(f"\nThe winner is {winner} with a bid of ${highest_bid} for {item_for_sale}.")
+print(f"\nThe winner is {winner}, with a bid of ${highest_bid} for {item_for_sale}.")
 
