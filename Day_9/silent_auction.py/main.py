@@ -63,6 +63,7 @@ while prompts:
     elif more_bidders == "n":
         prompts = False 
 
+#TODO not picking the highest bidder, evalauate the for loop
 #determine the winner
 for bidder in all_bidders:
     
