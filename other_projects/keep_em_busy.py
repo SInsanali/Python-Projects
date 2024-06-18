@@ -6,11 +6,6 @@
 #and delete it after a wait time. It will run indefinitely until stopped by the user.
 ##################################################################################################
 
-
-
-
- 
-
 import os
 import time
 import random
