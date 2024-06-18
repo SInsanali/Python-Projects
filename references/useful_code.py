@@ -26,4 +26,13 @@ except KeyboardInterrupt:
     print("\nExecution interrupted by user. Exiting program cleanly.")
 
 
+#NOTE
+#While loop input validation
+while True:
+    shift_input = input("How many places will this be shifted?:\n")   
 
+    if shift_input.isdigit():
+        shift = int(shift_input)
+        break
+    else:
+        print("\nPlease enter a valid number.")
