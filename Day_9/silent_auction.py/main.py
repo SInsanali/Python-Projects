@@ -63,13 +63,12 @@ while prompts:
     elif more_bidders == "n":
         prompts = False 
 
-#TODO not picking the highest bidder, evalauate the for loop
+
 #determine the winner
+winner = ""
+highest_bid = 0
+
 for bidder in all_bidders:
-    
-    winner = ""
-    highest_bid = 0
-    
     if bidder["bid"] > highest_bid:
         highest_bid = bidder["bid"]
         winner = bidder["name"]
