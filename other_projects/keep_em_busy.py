@@ -1,5 +1,15 @@
-#The purpose of this program is to create a file called things.txt in C:\"user"\Documents and delete it after a wait time
-#It will run indefinitely until stopped by the user. 
+##################################################################################################
+# Created by Sam Insanali
+# GitHub: https://github.com/SInsanali
+##################################################################################################
+#The purpose of this program is to create a file called things.txt in C:\"user"\Documents
+#and delete it after a wait time. It will run indefinitely until stopped by the user.
+##################################################################################################
+
+
+
+
+ 
 
 import os
 import time

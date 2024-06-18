@@ -1,9 +1,12 @@
 ##################################################################################################
-#Created by Sam Insanali
+# Created by Sam Insanali
+# GitHub: https://github.com/SInsanali
 ##################################################################################################
-#Silent auction game
-#The focus of this program is to solidify my strengths on working with nested dictionaries
+# Description:
+# Silent auction game
+#T he focus of this program is to solidify my strengths on working with nested dictionaries
 ##################################################################################################
+
 
 from os import system, name
 import art
