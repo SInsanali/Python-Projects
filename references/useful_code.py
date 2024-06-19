@@ -3,6 +3,7 @@
 from os import system, name
 
 def clear(): 
+    """Clears the screen on the console"""
     #for windows
     if name == "nt":
         action = system("cls")
