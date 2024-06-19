@@ -4,9 +4,15 @@
 ##################################################################################################
 # This program is the essential coding project, a calculator
 
-# I will be working on improving my skills on functions with outputs
+# For this project I am focsing on strengthening my skills with dictionaries, recursion, and functions with outputs. 
+
+# Project outline
+#Create functions for each mathematical operator
+#Create calculator function
+#Create prompt to determin direction of the program
 
 ##################################################################################################
+
 from art import logo
 from os import system, name
 
@@ -44,54 +50,50 @@ operations = {
     "^" : exponent,
 }
 
-# Start program
-clear()
-print(logo)
 
-run = True
-while run:
+def calculator():
     # User prompts for first calculation
     num1 = float(input("Enter the first number: "))
 
     # Print operators
     for operator in operations:
         print(operator)
-    
-    chosen_operator = input("Choose an operator: ")
-    
-    num2 = float(input("Enter the second number: "))
+        run = True # Set var so while loop can execute
 
-    # Calculator output
-    chosen_function = operations[chosen_operator]
-    initial_answer = chosen_function(num1, num2)
+    while run:
+        chosen_operator = input("Choose an operator: ")
 
-    # Display output
-    print(f"\n{num1} {chosen_operator} {num2} = {initial_answer}")
+        num2 = float(input("Enter the next number: "))
 
-    #NOTE this can be made into a function to code more effiecently 
-    calculate_again = input(f'\nEnter "y" to continue calculating using {initial_answer}, or enter "n" to finish calculating: ')
+        # Calculator output
+        chosen_function = operations[chosen_operator]
+        answer = chosen_function(num1, num2)
 
-    if calculate_again == "n":
-        print("\nThank you for using this program!")
-        run = False
+        # Display output
+        print(f"\n{num1} {chosen_operator} {num2} = {answer}")
 
-    # Second calculation
-    # User prompts for next calculation
-    chosen_operator = input("\nChoose an operator: ")
+        # user prompt to continue
+        continue_on = input(f'\nPress "enter" key to continue calculating using {answer}\
+                                \nEnter "n" to start a new calculation\
+                                \nEnter "x" to exit the program\n')
 
-    num3 = float(input("Enter the next number: "))
-
-    # Calculator output
-    chosen_function = operations[chosen_operator]
-    second_answer = chosen_function(initial_answer, num3)
-
-    # Display output
-    print(f"\n{initial_answer} {chosen_operator} {num3} = {second_answer}")
-
-    #testing
-    break
+        if continue_on == "y":
+            num1 = answer
+        elif continue_on == "n":
+            calculator() #recursion used here
+        elif continue_on == "x":
+            print("\nThank you for using this program!")
+            run = False
 
 
+# Start program
+try:
+    clear() # Clear console 
+    print(logo) 
+    calculator() 
 
+except KeyboardInterrupt:
+    #Print an error message and exit cleanly
+    print("\nExecution interrupted by user. Exiting program cleanly.")
 
-
+#TODO add input validation to user inputs. 
