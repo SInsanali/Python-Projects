@@ -36,8 +36,7 @@ def exponent(n1, n2):
     return n1 ** n2
 
 # Dictionary with all functions
-#NOTE do the brackets need to be there?
-opertaions = {
+operations = {
     "+" : add,
     "-" : subtract,
     "*" : multiply,
@@ -49,19 +48,50 @@ opertaions = {
 clear()
 print(logo)
 
-# User prompts
-num1 = float(input("Enter the first number: "))
+run = True
+while run:
+    # User prompts for first calculation
+    num1 = float(input("Enter the first number: "))
 
-for operator in opertaions:
-    print(operator)
+    # Print operators
+    for operator in operations:
+        print(operator)
+    
+    chosen_operator = input("Choose an operator: ")
+    
+    num2 = float(input("Enter the second number: "))
 
-chosen_operator = input("Choose an operator: ")
+    # Calculator output
+    chosen_function = operations[chosen_operator]
+    initial_answer = chosen_function(num1, num2)
 
-num2 = float(input("Enter the second number: "))
+    # Display output
+    print(f"\n{num1} {chosen_operator} {num2} = {initial_answer}")
+
+    #NOTE this can be made into a function to code more effiecently 
+    calculate_again = input(f'\nEnter "y" to continue calculating using {initial_answer}, or enter "n" to finish calculating: ')
+
+    if calculate_again == "n":
+        print("\nThank you for using this program!")
+        run = False
+
+    # Second calculation
+    # User prompts for next calculation
+    chosen_operator = input("\nChoose an operator: ")
+
+    num3 = float(input("Enter the next number: "))
+
+    # Calculator output
+    chosen_function = operations[chosen_operator]
+    second_answer = chosen_function(initial_answer, num3)
+
+    # Display output
+    print(f"\n{initial_answer} {chosen_operator} {num3} = {second_answer}")
+
+    #testing
+    break
 
 
-# Calculator output
-chosen_function = opertaions[chosen_operator]
-answer = chosen_function(num1, num2)
 
-print(f"\n{num1} {chosen_operator} {num2} = {answer}")
+
+
