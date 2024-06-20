@@ -25,6 +25,35 @@ def clear():
     else:
         action = system("clear")
 
+#BUG
+# Input validations functions
+def validate_integer(input_str):
+    """Validates that the input string is an integer."""
+    while True:
+        try:
+            return int(input_str)
+        except ValueError:
+            input_str = input("Invalid input. Please enter a valid number: ")
+
+def validate_float(input_str):
+    """Validates that the input string is a float."""
+    while True:
+        try:
+            return float(input_str)
+        except ValueError:
+            input_str = input("Invalid input. Please enter a valid number: ")
+
+def validate_operator(input_str):
+    """Validates that the input is in operations"""
+    while True:
+        for symbol in operations:
+            if input_str == symbol:
+                return input_str
+            else:
+                print("Please choose a valid operator")
+
+
+
 # Functions for various operators
 def add(n1, n2):
     return n1 + n2
@@ -53,7 +82,7 @@ operations = {
 
 def calculator():
     # User prompts for first calculation
-    num1 = float(input("Enter the first number: "))
+    num1 = validate_float(float(input("Enter the first number: "))) #XXX
 
     # Print operators
     for operator in operations:
@@ -61,9 +90,9 @@ def calculator():
         run = True # Set var so while loop can execute
 
     while run:
-        chosen_operator = input("Choose an operator: ")
+        chosen_operator = validate_operator(input("Choose an operator: ")) #XXX
 
-        num2 = float(input("Enter the next number: "))
+        num2 = validate_float(float(input("Enter the next number: "))) #XXX
 
         # Calculator output
         chosen_function = operations[chosen_operator]
@@ -94,6 +123,6 @@ try:
 
 except KeyboardInterrupt:
     #Print an error message and exit cleanly
-    print("\nExecution interrupted by user. Exiting program cleanly.")
+    print("\nExecution interrupted by user. Exiting program.")
 
 #TODO add input validation to user inputs. 
