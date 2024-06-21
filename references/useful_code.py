@@ -12,8 +12,8 @@
 
 #NOTE define clear screen function
 
+#clear screen function
 from os import system, name
-
 def clear(): 
     """Clears the screen on the console"""
     #for windows
