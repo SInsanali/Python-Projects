@@ -1,6 +1,8 @@
 ##################################################################################################
+
 # Created by Sam Insanali
 # GitHub: https://github.com/SInsanali
+
 ##################################################################################################
 # This program is the essential coding project, a calculator
 
@@ -20,38 +22,34 @@ def clear():
     """Clears the screen on the console"""
     #for windows
     if name == "nt":
-        action = system("cls")
+        system("cls")
     #for mac and linux(here, os.name is 'posix')
     else:
-        action = system("clear")
+        system("clear")
 
-#BUG
 # Input validations functions
-def validate_integer(input_str):
-    """Validates that the input string is an integer."""
+def validate_float(prompt_message):
+    """Validates user input is a decimal.
+    ex. user_input = validate_float("Enter a value: ")"""
     while True:
-        try:
-            return int(input_str)
-        except ValueError:
-            input_str = input("Invalid input. Please enter a valid number: ")
-
-def validate_float(input_str):
-    """Validates that the input string is a float."""
-    while True:
+        input_str = input(prompt_message)
         try:
             return float(input_str)
         except ValueError:
-            input_str = input("Invalid input. Please enter a valid number: ")
+            print("Invalid input. Please enter a valid number")
 
-def validate_operator(input_str):
-    """Validates that the input is in operations"""
+def validate_operator(prompt_message):
+    """Validates user input is a valid operator."""
+    valid_inputs = []
+    for operator in operations:
+        valid_inputs.append(operator)
+
     while True:
-        for symbol in operations:
-            if input_str == symbol:
-                return input_str
-            else:
-                print("Please choose a valid operator")
-
+        input_str = input(prompt_message)
+        if input_str in valid_inputs:
+            return input_str
+        else:
+            print("Please choose a valid operator")
 
 
 # Functions for various operators
@@ -82,7 +80,7 @@ operations = {
 
 def calculator():
     # User prompts for first calculation
-    num1 = validate_float(float(input("Enter the first number: "))) #XXX
+    num1 = validate_float("Enter the first number: ")
 
     # Print operators
     for operator in operations:
@@ -90,9 +88,9 @@ def calculator():
         run = True # Set var so while loop can execute
 
     while run:
-        chosen_operator = validate_operator(input("Choose an operator: ")) #XXX
+        chosen_operator = validate_operator("Choose an operator: ")
 
-        num2 = validate_float(float(input("Enter the next number: "))) #XXX
+        num2 = validate_float("Enter the next number: ")
 
         # Calculator output
         chosen_function = operations[chosen_operator]
@@ -106,7 +104,7 @@ def calculator():
                                 \nEnter "n" to start a new calculation\
                                 \nEnter "x" to exit the program\n')
 
-        if continue_on == "y":
+        if continue_on == "":
             num1 = answer
         elif continue_on == "n":
             calculator() #recursion used here

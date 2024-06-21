@@ -18,11 +18,11 @@ def clear():
     """Clears the screen on the console"""
     #for windows
     if name == "nt":
-        action = system("cls")
+        system("cls")
     #for mac and linux(here, os.name is 'posix')
     else:
-        action = system("clear")
-
+        system("clear")
+        
 #############################################################################################
 
 #NOTE Exit program cleanly
@@ -61,7 +61,7 @@ def validate_float(prompt_message):
     while True:
         input_str = input(prompt_message)
         try:
-            return float(prompt_message)
+            return float(input_str)
         except ValueError:
             print("Invalid input. Please enter a valid number")
 
