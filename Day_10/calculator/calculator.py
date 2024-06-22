@@ -82,6 +82,8 @@ operations = {
 
 
 def calculator():
+    clear() # Clear console
+    print(logo)
     # User prompts for first calculation
     num1 = validate_float("Enter the first number: ")
 
@@ -114,11 +116,11 @@ def calculator():
             else:
                 print("Choose a valid option")
                 
-
         #program logic
         if continue_on == "":
             num1 = answer
         elif continue_on == "n":
+            clear()
             calculator() #recursion used here
         elif continue_on == "x":
             print("\nThank you for using this program!")
@@ -126,9 +128,7 @@ def calculator():
 
 
 # Start program
-try:
-    clear() # Clear console 
-    print(logo) 
+try:  
     calculator() 
 
 except KeyboardInterrupt:
