@@ -11,7 +11,7 @@
 # Project outline
 #Create functions for each mathematical operator
 #Create calculator function
-#Create prompt to determin direction of the program
+#Create prompt to determine direction of the program
 
 ##################################################################################################
 
@@ -50,6 +50,9 @@ def validate_operator(prompt_message):
             return input_str
         else:
             print("Please choose a valid operator")
+
+
+
 
 
 # Functions for various operators
@@ -100,10 +103,19 @@ def calculator():
         print(f"\n{num1} {chosen_operator} {num2} = {answer}")
 
         # user prompt to continue
-        continue_on = input(f'\nPress "enter" key to continue calculating using {answer}\
-                                \nEnter "n" to start a new calculation\
-                                \nEnter "x" to exit the program\n')
+        while True:
+            valid_options = ["", "n", "x"] #accepted inputs from user
+            continue_on = input(f'\nPress "enter" key to continue calculating using {answer}\
+                                    \nEnter "n" to start a new calculation\
+                                    \nEnter "x" to exit the program\n')
+                
+            if continue_on in valid_options:
+                break
+            else:
+                print("Choose a valid option")
+                
 
+        #program logic
         if continue_on == "":
             num1 = answer
         elif continue_on == "n":
@@ -122,5 +134,5 @@ try:
 except KeyboardInterrupt:
     #Print an error message and exit cleanly
     print("\nExecution interrupted by user. Exiting program.")
+ 
 
-#TODO add input validation to user inputs. 
