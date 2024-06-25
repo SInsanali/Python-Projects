@@ -1,0 +1,24 @@
+prompt the user if they want to start the game
+    if yes start game
+    else print goodbye message
+
+print game logo
+## the computer acts as the dealer. 
+
+pick two cards and display them to the user in a list [1, 10], current total is x
+pick one card for the computer and display it, append the other card to a hidden list (hidden opponents score)
+
+prompt 1 for another card or 2 to end
+    if 1 append another card to users cards list and show the new list and total | append another card to the hidden list, still display the opponents first card
+        if blackjack, end game and delclare winner and show final scores
+
+    if 2 show users final list of cards and give total, show computers final list of cards and final score
+        compare scores and determine winner:
+            if score is under 21 for user and computer print winner is:
+            if score is over 21 for one, delare a bust and other player wins
+            if score is over 21 for both, the player wins. 
+
+play again prompt
+    if yes restart game ##maybe use a recursive function
+    if no print good bye message
+    
