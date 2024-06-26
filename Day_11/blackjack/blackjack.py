@@ -29,35 +29,50 @@ def calculate_player_score():
     players_score = 0
     for card in players_cards:
         players_score += card
-    #add rule for calculating ace as a 1 if it's over 21
+        
+    #TODO add rule for calculating ace as a 1 if total is over 21
     return players_score
 
-def first_hand():     
-    clear()
-    print(banner) #blackjack banner
+def deal_a_card(): #adds one card to each players hand
+    random_card_choice = random.choice(deck)
+    players_cards.append(random_card_choice)
+       
+    random_card_choice = random.choice(deck)
+    dealers_cards.append(random_card_choice)
 
-    while len(players_cards) != 2:
-        random_card_choice = random.choice(deck)
-        players_cards.append(random_card_choice)
-
-        random_card_choice = random.choice(deck)
-        dealers_cards.append(random_card_choice)
-    
+def display_hands():
     shown_dealers_hand = dealers_cards[0]
     players_score = calculate_player_score() #calculates player score, returned to players_score
     print(f"Players hand: {players_cards}   Total hand value: {players_score}") #prints both of the players cards
     print(f"Dealers hand: {shown_dealers_hand}") #need to make this print like a list eg. [1]
 
-def deal_hand():
+def user_prompt():
     while True:
         valid_options = ["1", "2"]
         hit_me = input('\nChoose how to continue:\
-                       \n"Hit me" = 1 || "Stay" = 2\n')
+                        \n"Hit me" = 1 || "Stay" = 2\n')
 
         if hit_me in valid_options:
-            break
+            return hit_me
         else:
             print("Please choose a valid option")
+
+def first_hand():     
+    clear()
+    print(banner) #blackjack banner
+    while len(players_cards) != 2: #deals 2 cards
+        deal_a_card()
+
+    display_hands()
+
+
+def deal_hand():
+    hit_me = user_prompt()
+    if hit_me == "1":
+       deal_a_card()
+       display_hands()
+
+
 
 
 #testing
