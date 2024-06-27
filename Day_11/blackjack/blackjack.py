@@ -25,27 +25,21 @@ def clear():
     else:
         system("clear")
 
-def calculate_player_score():
-    players_score = 0
-    for card in players_cards:
-        players_score += card
-        
-    #TODO add rule for calculating ace as a 1 if total is over 21
-    return players_score
 
-def deal_a_card(): #adds one card to each players hand
+def deal_a_card(): 
     random_card_choice = random.choice(deck)
     players_cards.append(random_card_choice)
        
     random_card_choice = random.choice(deck)
     dealers_cards.append(random_card_choice)
 
-def display_hands():
-    shown_dealers_hand = dealers_cards[0]
-    players_score = calculate_player_score() #calculates player score, returned to players_score
-    print(f"Players hand: {players_cards}   Total hand value: {players_score}") #prints both of the players cards
-    print(f"Dealers hand: {shown_dealers_hand}") #need to make this print like a list eg. [1]
+def calculate_player_score():
+    players_score = 0
+    for card in players_cards:
+        players_score += card
+    return players_score
 
+#user input determines the next step in the game
 def user_prompt():
     while True:
         valid_options = ["1", "2"]
@@ -57,17 +51,28 @@ def user_prompt():
         else:
             print("Please choose a valid option")
 
+
+def display_hands(): #during the game
+    shown_dealers_hand = dealers_cards[0]
+    players_score = calculate_player_score() #calculates player score, returned to players_score
+    print(f"Players hand: {players_cards}   Total hand value: {players_score}") #prints both of the players cards
+    print(f"Dealers hand: {shown_dealers_hand}") #need to make this print like a list eg. [1]
+
+# def display_final_hand(): #displayed at the end when a winner is decided.
+
+#Initial dealing of cards
 def first_hand():     
     clear()
     print(banner) #blackjack banner
     while len(players_cards) != 2: #deals 2 cards
         deal_a_card()
-
     display_hands()
 
 
-def deal_hand():
-    hit_me = user_prompt()
+
+#Used all times after the first hand
+def deal_hand(): 
+    hit_me = user_prompt() #recursively calls this
     if hit_me == "1":
        deal_a_card()
        display_hands()
@@ -78,4 +83,18 @@ def deal_hand():
 #testing
 first_hand()
 deal_hand()
-# print(f"test {players_cards} && {dealers_cards}")
+print(dealers_cards)
+
+
+#TODO make/modify function to be called when the game is over to show both players cards and totals. 
+#TODO add rule for calculating ace as a 1 if total is over 21
+#TODO add an input for calculate players score() maybe???
+
+
+#  def display_hands(show_all_dealer_cards=False):
+#     """Displays the player's and dealer's hands"""
+#     if show_all_dealer_cards:
+#         print(f"Dealer's hand: {dealers_cards} Total hand value: {calculate_score(dealers_cards)}")
+#     else:
+#         print(f"Dealer's hand: [{dealers_cards[0]}, ?]")
+#     print(f"Player's hand: {players_cards} Total hand value: {calculate_score(players_cards)}")
