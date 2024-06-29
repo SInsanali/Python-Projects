@@ -4,6 +4,8 @@
 ##################################################################################################
 #The purpose of this program is to create a file called things.txt in C:\"user"\Documents
 #and delete it after a wait time. It will run indefinitely until stopped by the user.
+
+#I made this to keep the computer busy so it wont lock while doing other tasks
 ##################################################################################################
 
 import os
