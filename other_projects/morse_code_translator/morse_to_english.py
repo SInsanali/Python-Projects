@@ -73,7 +73,15 @@ try:
         print("\nOption 1: Translate English text to Morse Code")
         print("Option 2: Translate Morse Code to English test")
 
-        program_purpose = input("\nType '1' for Option 1 or '2' for Option 2:\n")
+        while True:
+            valid_input = ["1", "2"]
+            program_purpose = input("\nType '1' for Option 1 or '2' for Option 2:\n")
+
+            if program_purpose in valid_input:
+                break
+            else:
+                print("Please choose a valid option")
+
 
         user_input = input("Enter the message to be converted:\n").lower().strip()
 
