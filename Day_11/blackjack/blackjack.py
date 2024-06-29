@@ -25,55 +25,69 @@ def clear():
     else:
         system("clear")
 
+def calculate_score(hand):
+    """Caculates the total value of a hand"""
+    score = 0
+    for card in hand:
+        score += card
+    return score
 
-def deal_a_card(): 
-    random_card_choice = random.choice(deck)
-    players_cards.append(random_card_choice)
-       
-    random_card_choice = random.choice(deck)
-    dealers_cards.append(random_card_choice)
+def display_hands(show_dealer_hand = False):
+    """Displays the players and dealers hand"""
+    player_score = calculate_score(players_cards)
+    dealers_score = calculate_score(dealers_cards)
+    
+    print(f"Players hand: {players_cards}   Total hand value: {player_score}") #prints both of the players cards
+   
+    if show_dealer_hand:
+        print(f"Dealers hand: {dealers_cards}   Total hand value: {dealers_score}")
+    else:
+        print(f"Dealers hand [{dealers_cards[0]}, ?]")
 
-def calculate_player_score():
-    players_score = 0
-    for card in players_cards:
-        players_score += card
-    return players_score
-
-#user input determines the next step in the game
-def user_prompt():
-    while True:
-        valid_options = ["1", "2"]
-        hit_me = input('\nChoose how to continue:\
-                        \n"Hit me" = 1 || "Stay" = 2\n')
-
-        if hit_me in valid_options:
-            return hit_me
-        else:
-            print("Please choose a valid option")
-
-
-def display_hands(): #during the game
-    shown_dealers_hand = dealers_cards[0]
-    players_score = calculate_player_score() #calculates player score, returned to players_score
-    print(f"Players hand: {players_cards}   Total hand value: {players_score}") #prints both of the players cards
-    print(f"Dealers hand: {shown_dealers_hand}") #need to make this print like a list eg. [1]
-
-# def display_final_hand(): #displayed at the end when a winner is decided.
-
-#Initial dealing of cards
-def first_hand():     
+def first_hand():
+    """Used to deal the initial hand for the game"""
     clear()
     print(banner) #blackjack banner
     while len(players_cards) != 2: #deals 2 cards
-        deal_a_card()
+        random_card_choice = random.choice(deck)
+        players_cards.append(random_card_choice) #for player
+        
+        random_card_choice = random.choice(deck)
+        dealers_cards.append(random_card_choice) #for dealer
     display_hands()
+
+
+#user input determines the next step in the game
+def user_prompt():
+    """Determines if the game continues on"""
+    while True:
+        valid_options = ["1", "2"]
+        should_continue = input('\nChoose how to continue:\
+                        \n"Hit me" = 1 || "Stay" = 2\n')
+
+        if should_continue in valid_options:
+            return should_continue
+        else:
+            print("Please choose a valid option")
+
+def deal_card(hand):
+    if hand == "player":
+        players_cards.append(random.choice(deck))
+    
+    while calculate_score(dealers_cards) < 16:
+        dealers_cards.append(random.choice(deck))
+
+        if calculate_score(dealers_cards) <= 17:
+            break # NOTE is break used correctly here?
+
 
 
 
 #Used all times after the first hand
-def deal_hand(): 
-    hit_me = user_prompt() #recursively calls this
-    if hit_me == "1":
+def deal_hand():
+    """Deals a card to both players"""
+    should_continue = user_prompt() #recursively calls this
+    if should_continue == "1":
        deal_a_card()
        display_hands()
 
@@ -90,6 +104,9 @@ print(dealers_cards)
 #TODO add rule for calculating ace as a 1 if total is over 21
 #TODO add an input for calculate players score() maybe???
 
+
+#NOTE Dealer must hit if their hand total is 16 or less.
+#NOTE Dealer must stand if their hand total is 17 or more.
 
 #  def display_hands(show_all_dealer_cards=False):
 #     """Displays the player's and dealer's hands"""
