@@ -10,6 +10,7 @@
 # This script allows users to enter a text message and converts it into Morse code,
 # or input Morse code and translates it back into the corresponding text.
 ##################################################################################################
+
 import conversion_guide
 from art import logo
 
@@ -40,7 +41,7 @@ def english_to_morse(provided_input):
             morse_output += char + " " #if character is not found, keep it as is
 
     morse_output = morse_output.strip() #removes any white spaces from the beginning and end
-    print(f'\n"{user_input}"converted to Morse Code is "{morse_output}"')
+    print(f'\n[-] User input: "{user_input}"\n[-] Morse Code output: {morse_output}')
 
 
 def morse_to_english(provided_input):
@@ -56,7 +57,7 @@ def morse_to_english(provided_input):
             english_output += letter #if character is not found, keep it as is
     
     english_output = english_output.strip() #removes any white spaces from the beginning and end
-    print(f'\n"{user_input}" converted to English is "{english_output}"')
+    print(f'\n[-] User input: "{user_input}"\n[-] English output: "{english_output.upper()}"')
 
 
 
@@ -70,20 +71,20 @@ try:
     print(logo)
     run_program = True
     while run_program:
-        print("\nOption 1: Translate English text to Morse Code")
-        print("Option 2: Translate Morse Code to English test")
+        print("\n[-] Option 1: Translate English text to Morse Code")
+        print("[-] Option 2: Translate Morse Code to English text")
 
         while True:
             valid_input = ["1", "2"]
-            program_purpose = input("\nType '1' for Option 1 or '2' for Option 2:\n")
+            program_purpose = input("\n[?] Type '1' for Option 1 or '2' for Option 2: ")
 
             if program_purpose in valid_input:
                 break
             else:
-                print("Please choose a valid option")
+                print("[!] Please choose a valid option")
 
 
-        user_input = input("Enter the message to be converted:\n").lower().strip()
+        user_input = input("[?] Enter the message to be converted: ").lower().strip()
 
         if program_purpose == "1":
             english_to_morse(user_input)
@@ -93,19 +94,19 @@ try:
         #run program again? 
         while True:
             valid_input = ["1", "2"]
-            convert_again = input("\nType '1' to perform another conversion | Type '2' to end the program:\n")
+            convert_again = input("\n[?] Type '1' to perform another conversion | Type '2' to end the program: ")
 
             if convert_again in valid_input:
                 break
             else:
-                print("Please choose a valid option")
+                print("[!] Please choose a valid option")
 
         #run program again logic
         if convert_again == "1":
             continue #restart the loop for another conversio
         else:
-            print("Thank you for using this program")
+            print("[-] Thank you for using this program")
             run_program = False #exit the loop and end the program
 
 except KeyboardInterrupt:
-    print("User keyboard interrupt, exiting program.")
+    print("\n[!] User keyboard interrupt, exiting program.")
