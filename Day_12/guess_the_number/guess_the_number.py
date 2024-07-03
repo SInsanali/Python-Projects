@@ -72,8 +72,16 @@ try:
 
         while player_lives != 0:
             print(f"[-] You have {player_lives} guesses left")
+
+            #check if the number is between 1 and 100
+            #bart proof
+            while True:
+                guess = validate_integer("\n[?] Guess a number: ")
             
-            guess = validate_integer("\n[?] Guess a number: ")
+                if 0 < guess < 100:
+                    break
+                else:
+                    print("[!] Pick a number between 1 and 100.")
 
             if guess == RANDOM_NUMBER:
                 print(f"[-] You got it! The answer was {RANDOM_NUMBER}")
