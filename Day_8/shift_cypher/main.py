@@ -3,6 +3,17 @@ import art
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+#clear screen function
+from os import system, name
+def clear(): 
+    """Clears the screen on the console"""
+    #for windows
+    if name == "nt":
+        system("cls")
+    #for mac and linux(here, os.name is 'posix')
+    else:
+        system("clear")
+
 # Define function
 def logic(instruction, input_text, shift_value):
     output_text = ""
@@ -34,41 +45,51 @@ def logic(instruction, input_text, shift_value):
     print(f"\nYour {operation} text is: {output_text}") 
 
 
-print(art.banner[2])
-
 run = True
 
-while run:
-    # Gather user inputs and output conditional logic
-    direction = input('\nType "e" to encode, type "d" to decode:\n')
-    #input validation
-    if direction != "e" and direction != "d":
-        print("\nPlease enter a valid single letter (e or d).")
-        continue
+try:
 
-    text = input("Enter your message to be converted:\n").lower()
-    
-    while True:
-        shift_input = input("How many places will this be shifted?:\n")   
+    while run:
 
-        if shift_input.isdigit():
-            shift = int(shift_input)
-            break
-        else:
-            print("\nPlease enter a valid number.")
+        clear()
 
-    #call logic function
-    logic(direction, text, shift)
+        print(art.banner[2])
+        
 
-    #run or end program
-    while True:
-        go_again = input('\nWould you like to run the program again? Type "y" to run again or "n" to end the program:\n')
-        if go_again == "y" or go_again == "n":
-            break
+        # Gather user inputs and output conditional logic
+        direction = input('\nType "e" to encode, type "d" to decode:\n')
+        #input validation
+        if direction != "e" and direction != "d":
+            print("\nPlease enter a valid single letter (e or d).")
+            continue
 
-        else:
-            print("\nPlease enter a valid single letter (y or n).\n")
-    
-    if go_again == "n":
-        run = False
-        print("\nThank you for using this program!")
+        text = input("Enter your message to be converted:\n").lower()
+        
+        while True:
+            shift_input = input("How many places will this be shifted?:\n")   
+
+            if shift_input.isdigit():
+                shift = int(shift_input)
+                break
+            else:
+                print("\nPlease enter a valid number.")
+
+        #call logic function
+        logic(direction, text, shift)
+
+        #run or end program
+        while True:
+            go_again = input('\nWould you like to run the program again? Type "y" to run again or "n" to end the program:\n')
+            if go_again == "y" or go_again == "n":
+                break
+
+            else:
+                print("\nPlease enter a valid single letter (y or n).\n")
+        
+        if go_again == "n":
+            run = False
+            print("\nThank you for using this program!")
+
+
+except KeyboardInterrupt:
+    print("\nExecution interrupted by user. Exiting program.")
