@@ -30,7 +30,7 @@ def cypher_crack():
             #find index number for the character
             og_char_position = ALPHABET.index(char)
             #shift the index
-            new_char_position = (og_char_position + shift_counter) % 26 
+            new_char_position = (og_char_position - shift_counter) % 26 
             #add new char to output string
             new_char = ALPHABET[new_char_position]
             output_text += new_char
