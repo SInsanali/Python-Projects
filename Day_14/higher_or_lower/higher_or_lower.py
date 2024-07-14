@@ -13,7 +13,7 @@
 ##################################################################################################
 ##################################################################################################
 import art
-from game_data import data as names
+from game_data import data
 import random
 
 #clear screen function
@@ -29,13 +29,64 @@ def clear():
 
 #pick random name from game_data
 def pick_random_name():
-    first_choice = random.choice(names)
-    print(first_choice("name:"))
+    random_name = random.choice(data)
+    return random_name
+    
+try:
 
+    clear()
+    print(art.logo)
+    user_score = 0
+    program_running = True
 
-#pick second random name from game_data
+    #display first choice to user
+    choice_a = pick_random_name()
 
+    #while loop starts here
+    while program_running:
+        print(f"\n[+] Option A: {choice_a["name"]}, a {choice_a["description"]}, from {choice_a['country']}")
 
-clear()
-print(art.logo)
-pick_random_name()
+        #ensure b != a
+        while True:
+            choice_b = pick_random_name()
+            if choice_b!= choice_a:
+                break
+            else:
+                continue
+
+        #print vs logo
+        print(art.vs)
+
+        #display second choice to user
+        print(f"\n[+] Option B: {choice_b['name']}, a {choice_b['description']}, from {choice_b['country']}")
+
+        #determine who has more IG followers
+        correct_answer = ""
+
+        if choice_a["follower_count"] > choice_b["follower_count"]:
+            correct_answer = "A"
+        elif choice_a["follower_count"] < choice_b["follower_count"]:
+            correct_answer = "B"
+
+        #make compare choice_a and choice_b
+        while True:
+            valid_inputs = ["A", "B"]
+            user_choice = input("\n[?] Who has more followers on Instagram? (A/B): ").upper()
+
+            if user_choice in valid_inputs:
+                break
+            else:
+                print("\n[!] Invalid input. Please enter either 'A' or 'B'.")
+
+        if user_choice == correct_answer:
+            user_score += 1
+            choice_a = choice_b
+            clear()
+            print(art.logo)
+            print(f"\n[*] Correct! Your current score is: {user_score}")
+        elif user_choice!= correct_answer:
+            print(f"\n[-] Game over! The correct answer was {correct_answer}. Your final score is: {user_score}")
+            program_running = False
+
+except KeyboardInterrupt:
+    print("\nExecution interrupted by user. Exiting program.")
