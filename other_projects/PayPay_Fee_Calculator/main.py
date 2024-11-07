@@ -69,21 +69,28 @@ try:
         clear()
 
         print(logo)
-        print(f"\nWelcome to the PayPal Goods & Services Fee Calculator!")
+        print("\nWelcome to the PayPal Goods & Services Fee Calculator!")
         print("\nCreated by Sam Insanali || GitHub: https://github.com/SInsanali ")
 
+        print(f"\nPayPal charges a 3.49% fee of the transaction amount along with a flat rate fee of $0.49.")
+
         # Input from user with validation
-        amount = validate_float(f"\n[!] Enter an amount: $")
+        amount = validate_float(f"\n[?] Enter an amount: $")
 
         # Calculate net received and PayPal fee for the input amount
         paypal_fee, net_received = calculate_paypal_fee(amount)
 
         print(f"\n[-] If you ask for ${amount:.2f}, you'll receive ${net_received:.2f} after PayPal takes ${paypal_fee:.2f}.")
+        print(f"\n      [-] Net received: ${net_received:.2f}")
+        print(f"      [-] PayPal fee: ${paypal_fee:.2f}\n")
 
+        
         # Calculate amount needed to receive the specified input amount after fees
         ask_for, paypal_fee_for_target = calculate_amount_for_target_net(amount)
 
-        print(f"\n[-] If you want to receive ${amount:.2f} after fees, you should ask for ${ask_for:.2f}, PayPal will take ${paypal_fee_for_target:.2f}.\n")
+        print(f"\n[-] If you want to receive ${amount:.2f} after fees, you should ask for ${ask_for:.2f}, PayPal will take ${paypal_fee_for_target:.2f}.")
+        print(f"\n      [-] Amount to be sent: ${ask_for:.2f}")
+        print(f"      [-] PayPal fee: ${paypal_fee_for_target:.2f}\n")
 
         # Ask if the user wants to perform another calculation
         while True:
